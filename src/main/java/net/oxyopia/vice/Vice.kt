@@ -170,6 +170,8 @@ class Vice : ClientModInitializer {
 		EVENT_MANAGER.subscribe(YetiHeadWarning)
 
 		EVENT_MANAGER.subscribe(BossCounter)
+		EVENT_MANAGER.subscribe(WastelandTime)
+		EVENT_MANAGER.subscribe(ScrapRace)
 		EVENT_MANAGER.subscribe(ForgeTimers)
 		EVENT_MANAGER.subscribe(GamingMode)
 		EVENT_MANAGER.subscribe(HudUtils)
@@ -185,6 +187,7 @@ class Vice : ClientModInitializer {
 		EVENT_MANAGER.subscribe(CurrentOrderDisplay)
 		EVENT_MANAGER.subscribe(CookingAPI)
 		EVENT_MANAGER.subscribe(OrderTracker)
+		EVENT_MANAGER.subscribe(CookingTime)
 
 		EVENT_MANAGER.subscribe(EvanNotification)
 //		EVENT_MANAGER.subscribe(EvanSolver)
