@@ -24,6 +24,12 @@ class BossStorage {
 	val elderpork = Boss()
 
 	@Expose
+	val diox = Boss()
+
+	@Expose
+	val dioxEasy = Boss()
+
+	@Expose
 	val shadowGelato = Boss()
 
 	@Expose
