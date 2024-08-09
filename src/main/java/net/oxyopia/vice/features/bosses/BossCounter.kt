@@ -4,6 +4,8 @@ import net.minecraft.client.gui.DrawContext
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
+import net.minecraft.text.Text
+import net.minecraft.util.Formatting
 import net.oxyopia.vice.Vice
 import net.oxyopia.vice.data.Colors
 import net.oxyopia.vice.data.World
@@ -13,6 +15,9 @@ import net.oxyopia.vice.events.*
 import net.oxyopia.vice.events.core.SubscribeEvent
 import net.oxyopia.vice.utils.HudUtils.drawTexts
 import net.oxyopia.vice.utils.HudUtils.toText
+import net.oxyopia.vice.utils.HudUtils.drawStrings
+import net.oxyopia.vice.utils.HudUtils.drawTexts
+import net.oxyopia.vice.utils.HudUtils.toFormattedText
 import net.oxyopia.vice.utils.Utils
 import java.awt.Color
 
@@ -34,18 +39,21 @@ object BossCounter: HudElement("Boss Counter", Vice.storage.bosses.bossCounterPo
 
 	private fun draw(context: DrawContext): Pair<Float, Float> {
 		val list: MutableList<Text> = mutableListOf("Bosses".toText(Vice.PRIMARY, bold = true))
+		val list: MutableList<Text> = mutableListOf("Bosses".toFormattedText(Vice.PRIMARY, bold = true))
 
 		list.addBossStat("Vice", Colors.ViceBoss, bosses.vice.completions)
 		list.addBossStat("Wasteyard", Colors.ChatColor.DarkRed, bosses.wasteyard.completions)
 		list.addBossStat("El Gelato", Colors.ChatColor.Green, bosses.gelato.completions)
 		list.addBossStat("PPP", Colors.ChatColor.Red, bosses.ppp.completions)
 		list.addBossStat("Minehut", Colors.ChatColor.Aqua, bosses.minehut.completions)
+		list.addBossStat("Diox", Colors.Diox, bosses.dioxEasy.completions, bosses.diox.completions)
 		list.addBossStat("Elderpork", Colors.Elderpork, bosses.elderpork.completions)
 		list.addBossStat("Shadow Gelato", Colors.ShadowGelato, bosses.shadowGelato.completions)
 		list.addBossStat("Abyssal Vice", Colors.Diox, bosses.abyssalVice.completions)
 
 		if (list.size == 1) {
 			list.add("No Bosses slain yet!".toText(Colors.ChatColor.Red))
+			list.add("No Bosses slain yet!".toFormattedText(Colors.ChatColor.Red))
 		}
 
 		return position.drawTexts(list, context)
@@ -65,6 +73,7 @@ object BossCounter: HudElement("Boss Counter", Vice.storage.bosses.bossCounterPo
 			World.AbyssalVice.isInWorld() && content.contains(abyssalCompletionRegex) -> bosses.abyssalVice.completions++
 			World.Elderpork.isInWorld() && content.contains("TAPE FINISHED.") -> bosses.elderpork.completions++
 			World.Diox.isInWorld() && content.contains("Diox: ITS NICE FOR US TO FINALLY MEET FACE TO FACE.") -> dioxMode = "EASY" // restart mode to easy
+			World.Elderpork.isInWorld() && content.contains("TAPE FINISHED.") -> bosses.elderpork.completions++
 			else -> return
 		}
 
@@ -110,8 +119,9 @@ object BossCounter: HudElement("Boss Counter", Vice.storage.bosses.bossCounterPo
 		Vice.storage.markDirty()
     }
 
-	private fun MutableList<Text>.addBossStat(string: String, color: Color, value: Int) {
-		if (value > 0) add(string.toText(color).append(Text.literal(" $value").formatted(Formatting.WHITE)))
+	private fun MutableList<Text>.addBossStat(string: String, color: Color, value: Int, value2: Int? = null) {
+		if((value2 != null) && ((value + value2) > 0)) add(string.toFormattedText(color).append(Text.literal(" $value").formatted(Formatting.GREEN)).append(Text.literal(" |").formatted(Formatting.WHITE)).append(Text.literal(" $value2").formatted(Formatting.RED)).append(Text.literal(" (${value+value2})").formatted(Formatting.WHITE)))
+		else if (value > 0) add(string.toFormattedText(color).append(Text.literal(" $value").formatted(Formatting.WHITE)))
 	}
 
     @SubscribeEvent

@@ -35,6 +35,9 @@ class BossStorage {
 	@Expose
 	val abyssalVice = Boss()
 
+	@Expose
+	val elderpork = Boss()
+
 	open class Boss {
 		@Expose
 		open var completions: Int = 0
