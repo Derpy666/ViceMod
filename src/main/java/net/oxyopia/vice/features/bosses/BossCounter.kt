@@ -71,7 +71,6 @@ object BossCounter: HudElement("Boss Counter", Vice.storage.bosses.bossCounterPo
 			World.Minehut.isInWorld() && content.contains(minehutTimeRegex) -> bosses.minehut.completions--
 			World.ShadowGelato.isInWorld() && content.contains(shadowTimeRegex) -> bosses.shadowGelato.completions--
 			World.AbyssalVice.isInWorld() && content.contains(abyssalCompletionRegex) -> bosses.abyssalVice.completions++
-			World.Elderpork.isInWorld() && content.contains("TAPE FINISHED.") -> bosses.elderpork.completions++
 			World.Diox.isInWorld() && content.contains("Diox: ITS NICE FOR US TO FINALLY MEET FACE TO FACE.") -> dioxMode = "EASY" // restart mode to easy
 			World.Elderpork.isInWorld() && content.contains("TAPE FINISHED.") -> bosses.elderpork.completions++
 			else -> return
