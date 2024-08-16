@@ -59,6 +59,7 @@ import net.oxyopia.vice.features.itemabilities.ItemAbilityCooldown
 import net.oxyopia.vice.features.itemabilities.CooldownDisplayChanger
 import net.oxyopia.vice.features.itemabilities.SetHighlighting
 import net.oxyopia.vice.features.misc.*
+import net.oxyopia.vice.features.summer.CherryOverlay
 import net.oxyopia.vice.features.summer.FishingDropsTracker
 import net.oxyopia.vice.features.summer.VioletOverlay
 import net.oxyopia.vice.utils.HudUtils
@@ -202,6 +203,7 @@ class Vice : ClientModInitializer {
 
 		EVENT_MANAGER.subscribe(FishingDropsTracker)
 		EVENT_MANAGER.subscribe(VioletOverlay)
+		EVENT_MANAGER.subscribe(CherryOverlay)
 
 		EVENT_MANAGER.subscribe(DefibCounter)
 		EVENT_MANAGER.subscribe(DoubleTapDrop)

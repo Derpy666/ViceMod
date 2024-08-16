@@ -15,9 +15,15 @@ class SummerStorage {
 	var violetReset = -1L
 
 	@Expose
+	var cherryReset = -1L
+
+	@Expose
 	var fishingDropsPos = Position(200f, 10f, centered = false)
 
 	@Expose
 	var violetInfoPos = Position(240f, 69f)
+
+	@Expose
+	var cherryInfoPos = Position(240f, 69f)
 
 }

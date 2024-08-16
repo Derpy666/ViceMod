@@ -591,6 +591,15 @@ public class Config extends Vigilant {
 	)
 	public boolean VIOLET_EXCHANGE_OVERLAY = false;
 
+	@Property(
+			type = PropertyType.SWITCH,
+			name = "Cherry Minigame Overlay",
+			description = "Shows a timer for the next Ice Cream Minigame refresh.",
+			category = "Event",
+			subcategory = "Summer"
+	)
+	public boolean CHERRY_OVERLAY = false;
+
 
 	// Sounds
 
