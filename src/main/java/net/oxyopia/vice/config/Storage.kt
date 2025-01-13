@@ -7,6 +7,7 @@ import net.oxyopia.vice.config.features.MiscStorage
 import net.oxyopia.vice.config.features.worlds.ArenaStorage
 import net.oxyopia.vice.config.features.worlds.AuxiliaryStorage
 import net.oxyopia.vice.config.features.BossStorage
+import net.oxyopia.vice.config.features.DailyQuestsStorage
 import net.oxyopia.vice.config.features.ExpeditionsStorage
 import net.oxyopia.vice.config.features.event.EventStorage
 import net.oxyopia.vice.config.features.worlds.CookingStorage
@@ -42,6 +43,9 @@ class Storage : PersistentSave(File("./config/vice/storage.json")) {
 
 	@Expose
 	var event = EventStorage()
+
+	@Expose
+	var daily = DailyQuestsStorage()
 
 	@Expose
 	var summer = SummerStorage()
