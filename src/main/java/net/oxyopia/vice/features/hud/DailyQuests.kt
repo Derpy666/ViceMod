@@ -37,18 +37,16 @@ object DailyQuests : HudElement(
         val list = mutableListOf("&&eDaily Quests:")
 
         for ((i, quest) in daily.quests.withIndex()) {
-            if (quest.type.isEmpty()) continue
 
             val name = quest.type
             if (quest.inCooldown) {
                 val diff = daily.quests[i].lastCompleted.timeDelta()
                 val remainingTime = DAILY_COOLDOWN.inWholeSeconds - diff.inWholeSeconds
                 val formatted = remainingTime.seconds.formatDuration()
-                if (daily.quests[i].lastCompleted > -1) {
+                if (remainingTime.seconds > 0.seconds) {
                     list.add("&&cNext in $formatted")
                 } else {
-                    daily.quests[i].inCooldown = false
-                    list.add("&&4Error wait for tmr")
+                    list.add("&&aSpeak with the NPC to take new quest")
                 }
                 continue
             } else {
@@ -76,8 +74,10 @@ object DailyQuests : HudElement(
 
         for (i in 0 until 3) {
             val stack = event.slots[21 + i].stack
-            if(stack.cleanName() != "Quest on Cooldown" || stack.item != Items.AIR) {
+            if(stack.item == Items.IRON_SWORD || stack.item == Items.IRON_PICKAXE) {
                 daily.quests[i].type = stack.cleanName()
+                daily.quests[i].inCooldown = false
+                daily.quests[i].lastCompleted = -1
 
                 val lore = stack.getLore()
                 val progress = extractProgressFromLore(lore)
@@ -130,10 +130,9 @@ object DailyQuests : HudElement(
         for ((i, quest) in daily.quests.withIndex()) {
             if (quest.type.contains(entityName)) {
                 daily.quests[i].progress[0]++
-                saveDailyData()
-                break
             }
         }
+        saveDailyData()
     }
 
     @SubscribeEvent
