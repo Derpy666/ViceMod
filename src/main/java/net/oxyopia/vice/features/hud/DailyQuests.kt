@@ -161,7 +161,6 @@ object DailyQuests : HudElement(
             if (quest.type.contains(questName)) {
                 daily.quests[i].progress[0]++
                 Vice.storage.markDirty()
-                break
             }
         }
     }
