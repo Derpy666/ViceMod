@@ -82,6 +82,12 @@ object DailyQuests : HudElement(
                 val lore = stack.getLore()
                 val progress = extractProgressFromLore(lore)
                 daily.quests[i].progress = progress
+            } else if (stack.item == Items.CLOCK) {
+                val lore = stack.getLore()
+                val remainingTime = extractCooldownTimeFromLore(lore)
+                if (remainingTime != -1L) {
+                    daily.quests[i].lastCompleted = System.currentTimeMillis() - (24.hours.inWholeMilliseconds - remainingTime)
+                }
             }
         }
 
@@ -121,6 +127,19 @@ object DailyQuests : HudElement(
             }
         }
         return mutableListOf(0, 0)
+    }
+
+    private fun extractCooldownTimeFromLore(lore: List<String>): Long {
+        val cooldownPattern = Pattern.compile("Next available in:\\s*(\\d+)h\\s*(\\d+)m")
+        for (line in lore) {
+            val matcher = cooldownPattern.matcher(line)
+            if (matcher.find()) {
+                val hours = matcher.group(1).toInt()
+                val minutes = matcher.group(2).toInt()
+                return ((hours * 60L) + minutes) * 60 * 1000
+            }
+        }
+        return -1L
     }
 
     @SubscribeEvent
