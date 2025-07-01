@@ -157,20 +157,32 @@ object DailyQuests : HudElement(
     @SubscribeEvent
     fun onSound(event: SoundEvent) {
         when {
-            event.soundName == "block.amethyst_block.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
-                updateQuestProgress("Amethyst Crystal")
+            World.Space.isInWorld() -> {
+                when {
+                    event.soundName == "block.amethyst_block.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
+                        updateQuestProgress("Amethyst Crystal")
+                    }
+                    event.soundName == "block.copper.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
+                        updateQuestProgress("Scrap Metal")
+                    }
+                }
             }
-            event.soundName == "block.copper.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
-                updateQuestProgress("Scrap Metal")
+            World.Glimpse.isInWorld() -> {
+                when {
+                    event.soundName == "block.glass.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
+                        updateQuestProgress("Office Light")
+                    }
+                    event.soundName == "block.wool.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
+                        updateQuestProgress("Carpet")
+                    }
+                }
             }
-            event.soundName == "block.glass.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
-                updateQuestProgress("Office Light")
-            }
-            event.soundName == "block.wool.break" && event.pitch == 0.5f && event.volume == 9999.0f -> {
-                updateQuestProgress("Carpet")
-            }
-            event.soundName == "item.shield.break" && event.pitch == 1.0f && event.volume == 9999.0f -> {
-                updateQuestProgress("Rock Shard")
+            World.TimelessTastes.isInWorld() -> {
+                when {
+                    event.soundName == "item.shield.break" && event.pitch == 1.0f && event.volume == 9999.0f -> {
+                        updateQuestProgress("Rock Shard")
+                    }
+                }
             }
         }
     }
