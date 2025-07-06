@@ -51,8 +51,12 @@ import net.oxyopia.vice.features.worlds.expeditions.MerchantOverlay
 import net.oxyopia.vice.features.worlds.expeditions.RoomWaypoints
 import net.oxyopia.vice.features.worlds.expeditions.RunOverview
 import net.oxyopia.vice.features.worlds.expeditions.StylePointsHider
+import net.oxyopia.vice.features.hud.CaveInPrediction
 import net.oxyopia.vice.features.worlds.glitchhq.DeliveryTimer
 import net.oxyopia.vice.features.worlds.magmaheights.ForgeTimers
+import net.oxyopia.vice.features.hud.GamingMode
+import net.oxyopia.vice.features.hud.PlayerStats
+import net.oxyopia.vice.features.hud.TrainTimer
 import net.oxyopia.vice.features.itemabilities.AbilitySoundChanger
 import net.oxyopia.vice.features.itemabilities.ItemAbilityCooldown
 import net.oxyopia.vice.features.itemabilities.CooldownDisplayChanger
@@ -63,8 +67,9 @@ import net.oxyopia.vice.features.event.summer.BarTimer
 import net.oxyopia.vice.features.event.summer.FishingDropsTracker
 import net.oxyopia.vice.features.event.summer.SummerAPI
 import net.oxyopia.vice.features.event.summer.SummerTimers
+import net.oxyopia.vice.features.hud.FishingBrewTimer
 import net.oxyopia.vice.features.event.turkinator.TurkinatorInvasionTimer
-import net.oxyopia.vice.features.hud.*
+import net.oxyopia.vice.features.hud.DailyQuests
 import net.oxyopia.vice.features.worlds.glitchhq.EvanNotification
 import net.oxyopia.vice.features.worlds.starrysuburbs.CheeseHelper
 import net.oxyopia.vice.features.worlds.starrysuburbs.FallenStarWaypoints
@@ -189,6 +194,7 @@ class Vice : ClientModInitializer {
 		EVENT_MANAGER.subscribe(PlayerStats)
 		EVENT_MANAGER.subscribe(TrainTimer)
 		EVENT_MANAGER.subscribe(TurkinatorInvasionTimer)
+		EVENT_MANAGER.subscribe(CrimsonCosmonaut)
 		EVENT_MANAGER.subscribe(DailyQuests)
 
 		EVENT_MANAGER.subscribe(AbilitySoundChanger)
