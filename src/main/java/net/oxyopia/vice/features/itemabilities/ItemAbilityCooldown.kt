@@ -115,6 +115,7 @@ object ItemAbilityCooldown {
 
 			// Barbed Shotgun
 			event.soundName == "entity.blaze.shoot" && event.pitch == 1.25f && event.volume == 3f -> {
+				ItemAbility.MIKEY_SHOTGUN.onSound()
 				ItemAbility.BARBED_SHOTGUN.onSound()
 				ItemAbility.SHOTGUN.onSound()
 				ItemAbility.BROKEN_FLASHLIGHT.onSound()
@@ -166,6 +167,7 @@ object ItemAbilityCooldown {
 				ItemAbility.SLIME_HOOK.onSound()
 				ItemAbility.LUMINESCENT_HOOK.onSound()
 				ItemAbility.GENHOOK.onSound()
+				ItemAbility.TENDRIL_HOOK.onSound()
 			}
 
 			// Bedrock Breaker
