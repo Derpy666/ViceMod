@@ -69,6 +69,7 @@ import net.oxyopia.vice.features.event.summer.SummerAPI
 import net.oxyopia.vice.features.event.summer.SummerTimers
 import net.oxyopia.vice.features.hud.FishingBrewTimer
 import net.oxyopia.vice.features.event.turkinator.TurkinatorInvasionTimer
+import net.oxyopia.vice.features.hud.BoxtownTimer
 import net.oxyopia.vice.features.hud.DailyQuests
 import net.oxyopia.vice.features.worlds.glitchhq.EvanNotification
 import net.oxyopia.vice.features.worlds.starrysuburbs.CheeseHelper
@@ -185,6 +186,7 @@ class Vice : ClientModInitializer {
 		EVENT_MANAGER.subscribe(FallenStarWaypoints)
 		EVENT_MANAGER.subscribe(BetterWarpMenu)
 		EVENT_MANAGER.subscribe(AmmoCounter)
+		EVENT_MANAGER.subscribe(BoxtownTimer)
 
 		EVENT_MANAGER.subscribe(BossCounter)
 		EVENT_MANAGER.subscribe(FishingBrewTimer)
