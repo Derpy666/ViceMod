@@ -70,8 +70,8 @@ import net.oxyopia.vice.features.event.summer.SummerTimers
 import net.oxyopia.vice.features.hud.FishingBrewTimer
 import net.oxyopia.vice.features.event.turkinator.TurkinatorInvasionTimer
 import net.oxyopia.vice.features.hud.BoxtownTimer
-import net.oxyopia.vice.features.hud.IvoryTimer
 import net.oxyopia.vice.features.hud.DailyQuests
+import net.oxyopia.vice.features.hud.IvoryTimer
 import net.oxyopia.vice.features.worlds.glitchhq.EvanNotification
 import net.oxyopia.vice.features.worlds.starrysuburbs.CheeseHelper
 import net.oxyopia.vice.features.worlds.starrysuburbs.FallenStarWaypoints
